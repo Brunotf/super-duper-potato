@@ -103,6 +103,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private JButton btnAdicionar;
 	private JComboBox <String> cboxOrganizarStatus;
 	private JComboBox <String> cboxTipoProduto;
+	private JTextField txtTipoProduto;
 	private JLabel lblExibir;
 	private JLabel lblFinalidade;
 	private JLabel lblNomeProduto;
@@ -499,6 +500,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		btnReturn.addActionListener( this );
 		btnAdicionarImagem.addActionListener( this );
 		tableProduto.getSelectionModel().addListSelectionListener( this );
+		btnAdicionar.addActionListener(this);
 		
 		this.txtValorComDesconto.requestFocusInWindow();
 		this.txtValorDoProduto.requestFocusInWindow();
@@ -515,6 +517,8 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		conjuntoOrigem.add(rdbtnNacional);
 		rdbtnImportado.setSelected(true);
 		rdbtnFinalidadeCliente.setSelected(true);
+		imagem.setVisible(false);
+		btnAdicionarImagem.setVisible(false);
 	}
 	public List<Produto> listarTudo(){
 		System.out.println("listei");
@@ -546,7 +550,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			bufImagem = ImageIO.read(getClass().getResource(imagemCarregada));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			imagemCarregada = null;
+//			imagemCarregada = null;
 			verImagem();
 			e.printStackTrace();
 		} finally {
@@ -597,12 +601,13 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	}
 
 	public Produto enviaProduto() {
+		
 		Produto produto = new Produto();
 		produto.setFinalidade(cojuntoFinalidade.getButtonCount());
 		produto.setNome(txtNomeProduto.getText());
 		produto.setMarca(txtMarca.getText());
 		produto.setDescricao(txtDescricao.getText());
-		produto.setTipoProduto(cboxTipoProduto.toString());
+		produto.setTipoProduto(cboxTipoProduto.getSelectedItem().toString());
 		produto.setOrigem(conjuntoOrigem.getButtonCount());
 		produto.setQuantidade((Integer)(spnQuantidade.getValue()));
 		produto.setQuantidadeAviso((Integer)(spnLimiteDeAviso.getValue()));
@@ -687,7 +692,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 					|| (Double.parseDouble(txtDescontoMaximo.getText()) < 0)
 					|| (Double.parseDouble(txtDescontoMaximo.getText()) > 100))) {
 				
-				JOptionPane.showMessageDialog(null, "Campos vazios ou preenchidos incorretamente!");
+				JOptionPane.showMessageDialog(null, "Campos vazios ou preenchidos incorretamente!", "ERRO", JOptionPane.ERROR_MESSAGE);
 			} 
 			else {
 				controle.adicionaProduto(enviaProduto());
@@ -735,17 +740,27 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 				imagemCarregada = recebeImagem.getSelectedFile().getAbsolutePath();
 				imagemCarregada = imagemCarregada.replaceAll("\\\\", "/");
 				imagemCarregada = ("file:///"+imagemCarregada);
+//				imagemCarregada = "C://Users//bruno//Documents//Overwatch//ScreenShots//Overwatch//ScreenShot_17-10-09_00-33-53-000.jpg";
 			}
 			System.out.println(imagemCarregada);
 			verImagem();
+		} 
+		
+		else if ("+".equals(cmd)) {
+			String tipoProduto = JOptionPane.showInputDialog("Informe o tipo de produto:", JOptionPane.INPUT_VALUE_PROPERTY);
+			cboxTipoProduto.addItem(tipoProduto);
+			cboxTipoProduto.invalidate();			
+			cboxTipoProduto.repaint();
+			cboxTipoProduto.revalidate();
 		}
+				
 	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		String cmd = e.toString();
 		System.out.println(cmd);
-		Produto produto = listagem.getDadosLinha(tableProduto.getSelectedRow());
+//		Produto produto = listagem.getDadosLinha(tableProduto.getSelectedRow());
 		btnAlterar.setEnabled(true);
 		btnExcluir.setEnabled(true);
 		painelBotoes.invalidate();

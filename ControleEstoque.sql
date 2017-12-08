@@ -17,6 +17,11 @@ nomeTipo VARCHAR(30) NOT NULL
 PRIMARY KEY (nomeTipo)
 )
 
+INSERT INTO tipoProd (nomeTipo) VALUES ('Condicionador'),
+('Xampú'), 
+('Esmalte'), 
+('Tinta')
+
 CREATE TABLE origem (
 id INT NOT NULL,
 tipo VARCHAR(15) NOT NULL
@@ -51,3 +56,10 @@ FOREIGN KEY (origem) REFERENCES origem(id)
 )
 
 SELECT * FROM produto
+
+SELECT * FROM tipoProd
+
+INSERT INTO produto (finalidade, nome, marca, descricao,tipoProduto, origem, quantidade, quantidadeAviso, validade,validadeAviso, valorProduto, descontoMax) VALUES
+				(1, 'Xampu SEDA', 'SEDA', 'Usa-se na cabeça', 'Xampú', 1, 10, 5, '10/10/2015', 7, 50, 5),
+				(1, 'Xampú Tressemé', 'Tressemé', 'Usa-se na cabeça', 'Xampú', 1, 10, 5, '14/07/2018', 7, 100, 10),
+				(1, 'Condicinador Garnier', 'Garnier Fructis', 'Usa-se na cabeça', 'Xampú', 1, 10, 4, '28/03/2019', 7, 20, 10)
