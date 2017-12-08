@@ -10,7 +10,7 @@ public class DBUtil {
 	
 	private final static String USERNAME = "crudcon";
 	private final static String PASSWORD = "abc123";
-	private final static String URLDB = "jdbc:jtds:sqlserver://localhost/ControleEstoque;instance=ASGARD;";
+	private final static String URLDB = "jdbc:jtds:sqlserver://localhost/ControleEstoque;namedPipes=true;";
 	private static DBUtil instancia;
 	private Connection con;
 

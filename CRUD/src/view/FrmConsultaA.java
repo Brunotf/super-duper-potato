@@ -561,6 +561,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	}
 	
 	public void ligarFormulario(){
+		
 		txtNomeProduto.setEnabled(ligarCampos);
 		txtMarca.setEnabled(ligarCampos);
 		txtDataDeValidade.setEnabled(ligarCampos);
@@ -596,8 +597,9 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		rdbtnFinalidadeSalao.setEnabled(ligarCampos);
 		rdbtnNacional.setEnabled(ligarCampos);
 		rdbtnImportado.setEnabled(ligarCampos);
-				
+		
 		txtValorComDesconto.setEditable(false);
+		
 	}
 
 	public Produto enviaProduto() {
