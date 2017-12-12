@@ -17,7 +17,7 @@ public class listaEstoque implements TableModel {
 
 	public listaEstoque(List<Produto> p) {
 		this.listaProduto = p;	
-		System.out.println("o construc");
+//		System.out.println("o construc");
 	}
 	
 
@@ -27,12 +27,10 @@ public class listaEstoque implements TableModel {
 		
 	@Override
 	public void addTableModelListener(TableModelListener arg0) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public Class<?> getColumnClass(int coluna) {
-		// TODO Auto-generated method stub
 		return String.class;
 	}
 
@@ -43,7 +41,6 @@ public class listaEstoque implements TableModel {
 
 	@Override
 	public String getColumnName(int coluna) {
-		// TODO Auto-generated method stub
 		switch (coluna) {
 		case 0:
 			return "Nome do Produto";
@@ -70,7 +67,7 @@ public class listaEstoque implements TableModel {
 
 	@Override
 	public Object getValueAt(int linha, int coluna) {
-		System.out.println("preenche");
+//		System.out.println("preenche");
 		Produto produto = this.listaProduto.get(linha);
 		switch (coluna) {
 		case 7:
@@ -98,13 +95,11 @@ public class listaEstoque implements TableModel {
 
 	@Override
 	public void removeTableModelListener(TableModelListener arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void setValueAt(Object arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
 
 	}
 

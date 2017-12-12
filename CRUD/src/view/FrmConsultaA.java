@@ -1,57 +1,51 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.RenderingHints;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
-
-import controller.ctrEstoque;
-import controller.listaEstoque;
-import model.Produto;
-
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.NumberFormatter;
 
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
-import java.awt.event.ActionEvent;
+import controller.ctrEstoque;
+import controller.listaEstoque;
+import model.Produto;
 
 public class FrmConsultaA extends JFrame implements ActionListener, ListSelectionListener {
 	private static final long serialVersionUID = 1L;
@@ -61,8 +55,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private ctrEstoque controle = new ctrEstoque();
 	private ButtonGroup cojuntoFinalidade;
 	private ButtonGroup cojuntoExibir; 
-	private ButtonGroup conjuntoOrigem;
-	
+	private ButtonGroup conjuntoOrigem;	
 	private JPanel contentPane;
 	private JPanel painelConsulta;
 	private JPanel painelPesquisa;
@@ -103,7 +96,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private JButton btnAdicionar;
 	private JComboBox <String> cboxOrganizarStatus;
 	private JComboBox <String> cboxTipoProduto;
-	private JTextField txtTipoProduto;
+//	private JTextField txtTipoProduto;
 	private JLabel lblExibir;
 	private JLabel lblFinalidade;
 	private JLabel lblNomeProduto;
@@ -199,7 +192,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 //		}
 		
 //		listagem.getValueAt(0, 0);
-		System.out.println("Retornei");
+//		System.out.println("Retornei");
 		tableProduto = new JTable(listagem);
 		tableProduto.setColumnSelectionAllowed(true);
 		tableProduto.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -521,7 +514,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		btnAdicionarImagem.setVisible(false);
 	}
 	public List<Produto> listarTudo(){
-		System.out.println("listei");
+//		System.out.println("listei");
 		List<Produto> listaTemp = controle.listarProdutos();
 		
 		return listaTemp;
@@ -544,12 +537,12 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		if (imagemCarregada == null) {
 			imagemCarregada = "./Icone-SemFoto.png";
 		}
-		System.out.println(imagemCarregada);
+//		System.out.println(imagemCarregada);
 		BufferedImage bufImagem = null;
 		try {
 			bufImagem = ImageIO.read(getClass().getResource(imagemCarregada));
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
+//			System.out.println(e.getMessage());
 //			imagemCarregada = null;
 			verImagem();
 			e.printStackTrace();
@@ -596,8 +589,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		rdbtnFinalidadeCliente.setEnabled(ligarCampos);
 		rdbtnFinalidadeSalao.setEnabled(ligarCampos);
 		rdbtnNacional.setEnabled(ligarCampos);
-		rdbtnImportado.setEnabled(ligarCampos);
-		
+		rdbtnImportado.setEnabled(ligarCampos);		
 		txtValorComDesconto.setEditable(false);
 		
 	}
@@ -698,7 +690,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			} 
 			else {
 				controle.adicionaProduto(enviaProduto());
-				System.out.println("registrar produto enviado a control");
+//				System.out.println("registrar produto enviado a control");
 				painelCampos.invalidate();
 				painelCampos.revalidate();
 				painelCampos.repaint();
@@ -716,7 +708,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			    }
 			    else if (control instanceof JComboBox)
 			    {
-			        JComboBox ctr = (JComboBox) control;
+			        JComboBox <Produto> ctr = (JComboBox<Produto>) control;
 			        ctr.setSelectedIndex(-1);
 			    }
 			    else if (control instanceof JSpinner)
@@ -744,7 +736,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 				imagemCarregada = ("file:///"+imagemCarregada);
 //				imagemCarregada = "C://Users//bruno//Documents//Overwatch//ScreenShots//Overwatch//ScreenShot_17-10-09_00-33-53-000.jpg";
 			}
-			System.out.println(imagemCarregada);
+//			System.out.println(imagemCarregada);
 			verImagem();
 		} 
 		

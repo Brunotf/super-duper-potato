@@ -19,7 +19,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		Connection con = DBUtil.getInstance().getConnection();
 		String sql = "INSERT INTO produto (finalidade, nome, marca, descricao,"
 				+ "tipoProduto, origem, quantidade, quantidadeAviso, validade,"
-				+ "validadeAviso, valorProduto, descontoMax) VALUES" + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "validadeAviso, valorProduto, descontoMax) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);

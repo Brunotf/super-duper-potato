@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 public class DBUtil {
 	
 	private final static String USERNAME = "crudcon";
-	private final static String PASSWORD = "abc123";
-	private final static String URLDB = "jdbc:jtds:sqlserver://localhost/ControleEstoque;namedPipes=true";
+	private final static String PASSWORD = "ABCD1234!";
+	private final static String URLDB = "jdbc:jtds:sqlserver://trabalhosalao.database.windows.net/ControleEstoque;namedPipes=true";
 	private static DBUtil instancia;
 	private Connection con;
 
@@ -34,7 +34,6 @@ public class DBUtil {
 
 	public Connection getConnection() {
 
-		return con;
-		
+		return con;		
 	}
 }
