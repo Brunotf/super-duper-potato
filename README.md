@@ -1,10 +1,6 @@
 # super-duper-potato
 
-Carregar as tabelas no SQL Server
-
-Criar um usuário com nome de "crudcon" e a senha "abc123"
-
-Habilitar a conexão via Pipes Nomeados (named pipes)
+Banco de dados conectando no azure, não é mais necessário criar banco de dados
 
 Rodar a classe FrmConsulta
 
