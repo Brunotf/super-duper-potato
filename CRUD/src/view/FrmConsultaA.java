@@ -54,8 +54,8 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private static FrmConsultaA tela = new FrmConsultaA();
 	private ctrEstoque controle = new ctrEstoque();
 	private ButtonGroup cojuntoFinalidade;
-	private ButtonGroup cojuntoExibir; 
-	private ButtonGroup conjuntoOrigem;	
+	private ButtonGroup cojuntoExibir;
+	private ButtonGroup conjuntoOrigem;
 	private JPanel contentPane;
 	private JPanel painelConsulta;
 	private JPanel painelPesquisa;
@@ -94,9 +94,9 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private JButton btnReturn;
 	private JButton btnAdicionarImagem;
 	private JButton btnAdicionar;
-	private JComboBox <String> cboxOrganizarStatus;
-	private JComboBox <String> cboxTipoProduto;
-//	private JTextField txtTipoProduto;
+	private JComboBox<String> cboxOrganizarStatus;
+	private JComboBox<String> cboxTipoProduto;
+	// private JTextField txtTipoProduto;
 	private JLabel lblExibir;
 	private JLabel lblFinalidade;
 	private JLabel lblNomeProduto;
@@ -119,16 +119,17 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 	private JSpinner spnAvisoDeValidade;
 	private JSpinner spnLimiteDeAviso;
 	private JSpinner spnQuantidade;
+	private listaEstoque listagem = new listaEstoque(listarTudo());
 
 	public FrmConsultaA() {
 	}
-	
-	public void telaPrincipal() {	
+
+	public void telaPrincipal() {
 		// habilitar campos
-		
+
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setBounds(100, 100, 1100, 550);
+		// setBounds(100, 100, 1100, 550);
 		this.setSize(1100, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -183,16 +184,15 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 
 		painelTabela = new JScrollPane();
 		painelConsulta.add(painelTabela, BorderLayout.CENTER);
-//		painelTabela.setLayout(new BorderLayout(0, 0));
-		listaEstoque listagem = new listaEstoque(listarTudo());
-		
-//		for (int x = 0; x < listagem.getRowCount(); x ++) {
-//			for (int y = 0; y < 7; y ++)
-//				listagem.getValueAt(x, y);			
-//		}
-		
-//		listagem.getValueAt(0, 0);
-//		System.out.println("Retornei");
+		// painelTabela.setLayout(new BorderLayout(0, 0));
+
+		// for (int x = 0; x < listagem.getRowCount(); x ++) {
+		// for (int y = 0; y < 7; y ++)
+		// listagem.getValueAt(x, y);
+		// }
+
+		// listagem.getValueAt(0, 0);
+		// System.out.println("Retornei");
 		tableProduto = new JTable(listagem);
 		tableProduto.setColumnSelectionAllowed(true);
 		tableProduto.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -210,17 +210,16 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		painelImprimir.add(new JLabel());
 		painelImprimir.add(btnImprimir);
 		painelImprimir.add(new JLabel());
-		
-		//FORMULARIO
+
+		// FORMULARIO
 		painelFormulario = new JPanel();
 		contentPane.add(painelFormulario);
 		painelFormulario.setLayout(new BorderLayout(0, 0));
 
 		painelCampos = new JPanel();
 		painelFormulario.add(painelCampos, BorderLayout.CENTER);
-		
+
 		verImagem();
-		
 
 		lblFinalidade = new JLabel("Finalidade: ");
 		rdbtnFinalidadeCliente = new JRadioButton("Cliente");
@@ -245,7 +244,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 
 		lblTipoDeProduto = new JLabel("Tipo de Produto: ");
 
-		cboxTipoProduto = new JComboBox <String> ();
+		cboxTipoProduto = new JComboBox<String>();
 
 		btnAdicionar = new JButton("+");
 
@@ -256,7 +255,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		rdbtnNacional = new JRadioButton("Nacional");
 
 		lblQuantidade = new JLabel("Quantidade:");
-		
+
 		spnQuantidade = new JSpinner();
 
 		lblLimiteDeAviso = new JLabel("Limite de Aviso:");
@@ -279,21 +278,22 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 
 		lblValorDoProduto = new JLabel("Valor do Produto:");
 
-//		NumberFormat formatoValor = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
-//		formatoValor.setMaximumFractionDigits(2);
+		// NumberFormat formatoValor = NumberFormat.getCurrencyInstance(new
+		// Locale("pt","BR"));
+		// formatoValor.setMaximumFractionDigits(2);
 		NumberFormatter valorFormatado = new NumberFormatter();
 		valorFormatado.setMinimum(0.01);
 		valorFormatado.setMaximum(10000.00);
 		valorFormatado.setOverwriteMode(true);
 		valorFormatado.setAllowsInvalid(false);
-		
+
 		lblValorComDesconto = new JLabel("Valor com Desconto:");
 		txtValorComDesconto = new JFormattedTextField(valorFormatado);
-//		txtValorComDesconto.setValue(0.00);
+		// txtValorComDesconto.setValue(0.00);
 		txtValorComDesconto.setColumns(10);
-		
+
 		txtValorDoProduto = new JFormattedTextField(valorFormatado);
-//		txtValorDoProduto.setValue(0.00);
+		// txtValorDoProduto.setValue(0.00);
 		txtValorDoProduto.setColumns(10);
 
 		NumberFormatter descontoFormato = new NumberFormatter();
@@ -304,8 +304,6 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		txtDescontoMaximo.setColumns(10);
 
 		lblPercent = new JLabel("%");
-
-		
 
 		GroupLayout gl_painelCampos = new GroupLayout(painelCampos);
 		gl_painelCampos.setHorizontalGroup(gl_painelCampos.createParallelGroup(Alignment.LEADING)
@@ -321,16 +319,14 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 												.addComponent(imagem, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
 										.addPreferredGap(ComponentPlacement.UNRELATED)
 										.addGroup(gl_painelCampos.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblFinalidade).addGroup(
-														gl_painelCampos
-																.createSequentialGroup().addComponent(lblMarca).addGap(
-																		245))
+												.addComponent(lblFinalidade)
+												.addGroup(gl_painelCampos
+														.createSequentialGroup().addComponent(lblMarca).addGap(245))
 												.addComponent(lblDescricao)
 												.addGroup(gl_painelCampos.createSequentialGroup()
 														.addComponent(lblNomeProduto)
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addGroup(gl_painelCampos
-																.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_painelCampos.createParallelGroup(Alignment.LEADING)
 																.addComponent(txtMarca, GroupLayout.DEFAULT_SIZE, 322,
 																		Short.MAX_VALUE)
 																.addComponent(txtNomeProduto, GroupLayout.DEFAULT_SIZE,
@@ -380,124 +376,115 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 								.addComponent(lblOrigem).addGap(6).addComponent(rdbtnImportado)
 								.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(rdbtnNacional)
 								.addContainerGap(100, Short.MAX_VALUE)))));
-		gl_painelCampos.setVerticalGroup(
-				gl_painelCampos.createParallelGroup(Alignment.LEADING).addGroup(gl_painelCampos
-						.createSequentialGroup().addGap(11).addGroup(gl_painelCampos
-								.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_painelCampos.createSequentialGroup()
-										.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-												.addComponent(lblNomeProduto).addComponent(txtNomeProduto,
-														GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.PREFERRED_SIZE))
-										.addGap(22)
-										.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-												.addComponent(lblMarca)
-												.addComponent(txtMarca, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGap(23)
-										.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-												.addComponent(lblDescricao).addComponent(txtDescricao,
-														GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
-								.addGroup(gl_painelCampos.createSequentialGroup()
-										.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-												.addComponent(imagem, GroupLayout.PREFERRED_SIZE, 141,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblFinalidade).addComponent(rdbtnFinalidadeCliente)
-												.addComponent(rdbtnFinalidadeSalao))
-										.addGap(5).addComponent(btnAdicionarImagem)))
-						.addGap(29)
-						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblTipoDeProduto)
-								.addComponent(cboxTipoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnAdicionar).addComponent(rdbtnImportado).addComponent(lblOrigem)
-								.addComponent(rdbtnNacional))
-						.addGap(26)
-						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblQuantidade)
-								.addComponent(spnLimiteDeAviso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblUnidades)
-								.addComponent(spnQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblLimiteDeAviso))
-						.addGap(26)
-						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblDatasDeValidade).addComponent(lblDias)
-								.addComponent(txtDataDeValidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblAvisoDeValidade).addComponent(spnAvisoDeValidade,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+		gl_painelCampos.setVerticalGroup(gl_painelCampos.createParallelGroup(Alignment.LEADING).addGroup(gl_painelCampos
+				.createSequentialGroup().addGap(11)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.TRAILING).addGroup(gl_painelCampos
+						.createSequentialGroup()
+						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblNomeProduto)
+								.addComponent(txtNomeProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE))
-						.addGap(31)
-						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblValorDoProduto).addComponent(lblDescontoMaximo)
-								.addComponent(txtValorDoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtDescontoMaximo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblPercent))
-						.addGap(26)
-						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblValorComDesconto).addComponent(txtValorComDesconto,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						.addGap(22)
+						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblMarca)
+								.addComponent(txtMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(107, Short.MAX_VALUE)));
-		
+						.addGap(23)
+						.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblDescricao)
+								.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 39,
+										GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_painelCampos.createSequentialGroup().addGroup(gl_painelCampos
+								.createParallelGroup(Alignment.BASELINE)
+								.addComponent(imagem, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblFinalidade).addComponent(rdbtnFinalidadeCliente)
+								.addComponent(rdbtnFinalidadeSalao)).addGap(5).addComponent(btnAdicionarImagem)))
+				.addGap(29)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblTipoDeProduto)
+						.addComponent(cboxTipoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAdicionar).addComponent(rdbtnImportado).addComponent(lblOrigem)
+						.addComponent(rdbtnNacional))
+				.addGap(26)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblQuantidade)
+						.addComponent(spnLimiteDeAviso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUnidades)
+						.addComponent(spnQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblLimiteDeAviso))
+				.addGap(26)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblDatasDeValidade)
+						.addComponent(lblDias)
+						.addComponent(txtDataDeValidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblAvisoDeValidade).addComponent(spnAvisoDeValidade, GroupLayout.PREFERRED_SIZE,
+								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGap(31)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblValorDoProduto)
+						.addComponent(lblDescontoMaximo)
+						.addComponent(txtValorDoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtDescontoMaximo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPercent))
+				.addGap(26)
+				.addGroup(gl_painelCampos.createParallelGroup(Alignment.BASELINE).addComponent(lblValorComDesconto)
+						.addComponent(txtValorComDesconto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(107, Short.MAX_VALUE)));
+
 		painelCampos.setLayout(gl_painelCampos);
-		
-				painelBotoes = new JPanel(new GridLayout(1, 7));
-				painelFormulario.add(painelBotoes, BorderLayout.SOUTH);
-				
-						btnNovo = new JButton("Novo");
-						painelBotoes.add(new JLabel());
-						painelBotoes.add(btnNovo);
-						painelBotoes.add(new JLabel());
-						
-								btnAlterar = new JButton("Alterar");
-								painelBotoes.add(btnAlterar);
-								painelBotoes.add(new JLabel());
-								
-										btnExcluir = new JButton("Excluir");
-										painelBotoes.add(btnExcluir);
-										painelBotoes.add(new JLabel());
-				
-				painelCriar = new JPanel(new GridLayout(1, 5));
-				
-						btnRegistrarProd = new JButton("Registrar");
-						painelCriar.add(new JLabel());
-						painelCriar.add(btnRegistrarProd);
-						painelCriar.add(new JLabel());
-				
-							btnReturn = new JButton ("Voltar");
-							painelCriar.add(btnReturn);
-							painelCriar.add(new JLabel());
-				
-				painelAlterar = new JPanel(new GridLayout(1, 7));
-				
-						btnAlterarProd = new JButton("Alterar Produto");
-						painelAlterar.add(new JLabel());
-						painelAlterar.add(new JLabel());
-						painelAlterar.add(btnAlterarProd);
-						painelAlterar.add(new JLabel());
-							btnVoltar = new JButton ("Voltar");
-							painelAlterar.add(btnVoltar);
-							painelAlterar.add(new JLabel());
-							painelAlterar.add(new JLabel());
-				
+
+		painelBotoes = new JPanel(new GridLayout(1, 7));
+		painelFormulario.add(painelBotoes, BorderLayout.SOUTH);
+
+		btnNovo = new JButton("Novo");
+		painelBotoes.add(new JLabel());
+		painelBotoes.add(btnNovo);
+		painelBotoes.add(new JLabel());
+
+		btnAlterar = new JButton("Alterar");
+		painelBotoes.add(btnAlterar);
+		painelBotoes.add(new JLabel());
+
+		btnExcluir = new JButton("Excluir");
+		painelBotoes.add(btnExcluir);
+		painelBotoes.add(new JLabel());
+
+		painelCriar = new JPanel(new GridLayout(1, 5));
+
+		btnRegistrarProd = new JButton("Registrar");
+		painelCriar.add(new JLabel());
+		painelCriar.add(btnRegistrarProd);
+		painelCriar.add(new JLabel());
+
+		btnReturn = new JButton("Voltar");
+		painelCriar.add(btnReturn);
+		painelCriar.add(new JLabel());
+
+		painelAlterar = new JPanel(new GridLayout(1, 7));
+
+		btnAlterarProd = new JButton("Alterar Produto");
+		painelAlterar.add(new JLabel());
+		painelAlterar.add(new JLabel());
+		painelAlterar.add(btnAlterarProd);
+		painelAlterar.add(new JLabel());
+		btnVoltar = new JButton("Voltar");
+		painelAlterar.add(btnVoltar);
+		painelAlterar.add(new JLabel());
+		painelAlterar.add(new JLabel());
+
 		ligarFormulario();
-		btnNovo.addActionListener( this );
-		btnAlterar.addActionListener( this );
-		btnExcluir.addActionListener( this );
-		btnRegistrarProd.addActionListener( this );
-		btnReturn.addActionListener( this );
-		btnAdicionarImagem.addActionListener( this );
-		tableProduto.getSelectionModel().addListSelectionListener( this );
+		btnNovo.addActionListener(this);
+		btnAlterar.addActionListener(this);
+		btnExcluir.addActionListener(this);
+		btnRegistrarProd.addActionListener(this);
+		btnReturn.addActionListener(this);
+		btnAdicionarImagem.addActionListener(this);
+		tableProduto.getSelectionModel().addListSelectionListener(this);
 		btnAdicionar.addActionListener(this);
-		
+
 		this.txtValorComDesconto.requestFocusInWindow();
 		this.txtValorDoProduto.requestFocusInWindow();
-		
+
 		cojuntoFinalidade = new ButtonGroup();
 		cojuntoFinalidade.add(rdbtnFinalidadeCliente);
 		cojuntoFinalidade.add(rdbtnFinalidadeSalao);
@@ -513,10 +500,11 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		imagem.setVisible(false);
 		btnAdicionarImagem.setVisible(false);
 	}
-	public List<Produto> listarTudo(){
-//		System.out.println("listei");
+
+	public List<Produto> listarTudo() {
+		// System.out.println("listei");
 		List<Produto> listaTemp = controle.listarProdutos();
-		
+
 		return listaTemp;
 	}
 
@@ -532,29 +520,29 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			}
 		});
 	}
-	
+
 	public void verImagem() {
 		if (imagemCarregada == null) {
 			imagemCarregada = "./Icone-SemFoto.png";
 		}
-//		System.out.println(imagemCarregada);
+		// System.out.println(imagemCarregada);
 		BufferedImage bufImagem = null;
 		try {
 			bufImagem = ImageIO.read(getClass().getResource(imagemCarregada));
 		} catch (IOException e) {
-//			System.out.println(e.getMessage());
-//			imagemCarregada = null;
+			// System.out.println(e.getMessage());
+			// imagemCarregada = null;
 			verImagem();
 			e.printStackTrace();
 		} finally {
 			bufImagem = adjustaImagem(bufImagem, 150, 150);
-			imagem = new JLabel (new ImageIcon(bufImagem));
+			imagem = new JLabel(new ImageIcon(bufImagem));
 		}
-		
+
 	}
-	
-	public void ligarFormulario(){
-		
+
+	public void ligarFormulario() {
+
 		txtNomeProduto.setEnabled(ligarCampos);
 		txtMarca.setEnabled(ligarCampos);
 		txtDataDeValidade.setEnabled(ligarCampos);
@@ -589,13 +577,13 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		rdbtnFinalidadeCliente.setEnabled(ligarCampos);
 		rdbtnFinalidadeSalao.setEnabled(ligarCampos);
 		rdbtnNacional.setEnabled(ligarCampos);
-		rdbtnImportado.setEnabled(ligarCampos);		
+		rdbtnImportado.setEnabled(ligarCampos);
 		txtValorComDesconto.setEditable(false);
-		
+
 	}
 
 	public Produto enviaProduto() {
-		
+
 		Produto produto = new Produto();
 		produto.setFinalidade(cojuntoFinalidade.getButtonCount());
 		produto.setNome(txtNomeProduto.getText());
@@ -603,23 +591,22 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		produto.setDescricao(txtDescricao.getText());
 		produto.setTipoProduto(cboxTipoProduto.getSelectedItem().toString());
 		produto.setOrigem(conjuntoOrigem.getButtonCount());
-		produto.setQuantidade((Integer)(spnQuantidade.getValue()));
-		produto.setQuantidadeAviso((Integer)(spnLimiteDeAviso.getValue()));
+		produto.setQuantidade((Integer) (spnQuantidade.getValue()));
+		produto.setQuantidadeAviso((Integer) (spnLimiteDeAviso.getValue()));
 		produto.setValidade(txtDataDeValidade.getText());
-		produto.setValidadeAviso((Integer)(spnAvisoDeValidade.getValue()));
+		produto.setValidadeAviso((Integer) (spnAvisoDeValidade.getValue()));
 		produto.setValorProduto(Double.parseDouble(txtValorDoProduto.getText()));
 		produto.setDescontoMax(Integer.parseInt(txtDescontoMaximo.getText()));
-		//desconto com acesso direto ao produto
-		txtValorComDesconto.setText(String.valueOf(produto.calculaDesconto())); 
+		// desconto com acesso direto ao produto
+		txtValorComDesconto.setText(String.valueOf(produto.calculaDesconto()));
 		return produto;
-//		produto.setImagem();
+		// produto.setImagem();
 	}
-	
+
 	public void recebeProduto(Produto produto) {
 		if (produto.getFinalidade() == 0) {
 			rdbtnFinalidadeCliente.setSelected(true);
-		}
-		else {
+		} else {
 			rdbtnFinalidadeSalao.setSelected(true);
 		}
 		txtNomeProduto.setText(produto.getNome());
@@ -628,8 +615,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		cboxTipoProduto.setSelectedItem(produto.getTipoProduto());
 		if (produto.getOrigem() == 1) {
 			rdbtnImportado.setSelected(true);
-		}
-		else {
+		} else {
 			rdbtnNacional.setSelected(true);
 		}
 		spnQuantidade.setValue(produto.getQuantidade());
@@ -639,83 +625,71 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 		txtValorDoProduto.setText(String.valueOf(produto.getValorProduto()));
 		imagemCarregada = produto.getImagem();
 	}
-	
+
 	public BufferedImage adjustaImagem(BufferedImage img, int w, int h) {
 		BufferedImage imgSize = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-	    Graphics2D g2 = imgSize.createGraphics();
+		Graphics2D g2 = imgSize.createGraphics();
 
-	    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-	    g2.drawImage(img, 0, 0, w, h, null);
-	    g2.dispose();
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g2.drawImage(img, 0, 0, w, h, null);
+		g2.dispose();
 		return imgSize;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		String cmd = e.getActionCommand();
-//		System.out.println(cmd +" - ");
-		
-		if("Novo".equals(cmd)) {
+		// System.out.println(cmd +" - ");
+
+		if ("Novo".equals(cmd)) {
 			ligarCampos = true;
 			ligarFormulario();
 			painelFormulario.add(painelCriar, BorderLayout.SOUTH);
 			painelBotoes.setVisible(false);
 		}
-		
+
 		else if ("Alterar".equals(cmd)) {
-			
+
 			ligarCampos = true;
 			ligarFormulario();
 			painelFormulario.add(painelAlterar, BorderLayout.SOUTH);
 		}
-		
+
 		else if ("Excluir".equals(cmd)) {
-			
-		}
-		else if ("Registrar".equals(cmd)) {
-			if ((txtDescontoMaximo.getText().isEmpty())
-					|| ((txtNomeProduto.getText().isEmpty())
-					|| (txtMarca.getText().isEmpty())
-					|| (txtDescricao.getText().isEmpty())
-					|| (((Integer)spnQuantidade.getValue()) < 0)
-					|| (((Integer)spnLimiteDeAviso.getValue()) < 0)
-					|| (txtDataDeValidade.getText().isEmpty())
-					|| (((Integer)spnAvisoDeValidade.getValue()) < 0)
+
+		} else if ("Registrar".equals(cmd)) {
+			if ((txtDescontoMaximo.getText().isEmpty()) || ((txtNomeProduto.getText().isEmpty())
+					|| (txtMarca.getText().isEmpty()) || (txtDescricao.getText().isEmpty())
+					|| (((Integer) spnQuantidade.getValue()) < 0) || (((Integer) spnLimiteDeAviso.getValue()) < 0)
+					|| (txtDataDeValidade.getText().isEmpty()) || (((Integer) spnAvisoDeValidade.getValue()) < 0)
 					|| (Double.parseDouble(txtValorDoProduto.getText()) < 0)
 					|| (Double.parseDouble(txtDescontoMaximo.getText()) < 0)
 					|| (Double.parseDouble(txtDescontoMaximo.getText()) > 100))) {
-				
-				JOptionPane.showMessageDialog(null, "Campos vazios ou preenchidos incorretamente!", "ERRO", JOptionPane.ERROR_MESSAGE);
-			} 
-			else {
+
+				JOptionPane.showMessageDialog(null, "Campos vazios ou preenchidos incorretamente!", "ERRO",
+						JOptionPane.ERROR_MESSAGE);
+			} else {
 				controle.adicionaProduto(enviaProduto());
-//				System.out.println("registrar produto enviado a control");
+				// System.out.println("registrar produto enviado a control");
 				painelCampos.invalidate();
 				painelCampos.revalidate();
 				painelCampos.repaint();
 			}
-						
-		}
-		else if ("Voltar".equals(cmd)) {
-			//LIMPA CAMPOS
-			for(Component control : painelFormulario.getComponents())
-			{
-			    if(control instanceof JTextField)
-			    {
-			        JTextField ctrl = (JTextField) control;
-			        ctrl.setText("");
-			    }
-			    else if (control instanceof JComboBox)
-			    {
-			        JComboBox <Produto> ctr = (JComboBox<Produto>) control;
-			        ctr.setSelectedIndex(-1);
-			    }
-			    else if (control instanceof JSpinner)
-			    {
-			    	JSpinner ctr = (JSpinner) control;
-			        ctr.setValue(0);
-			    }
+
+		} else if ("Voltar".equals(cmd)) {
+			// LIMPA CAMPOS
+			for (Component control : painelFormulario.getComponents()) {
+				if (control instanceof JTextField) {
+					JTextField ctrl = (JTextField) control;
+					ctrl.setText("");
+				} else if (control instanceof JComboBox) {
+					JComboBox<Produto> ctr = (JComboBox<Produto>) control;
+					ctr.setSelectedIndex(-1);
+				} else if (control instanceof JSpinner) {
+					JSpinner ctr = (JSpinner) control;
+					ctr.setValue(0);
+				}
 			}
 			imagemCarregada = null;
 			ligarCampos = false;
@@ -724,7 +698,7 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			painelBotoes.setVisible(true);
 			telaPrincipal();
 		}
-		
+
 		else if ("Adicionar Imagem".equals(cmd)) {
 			JFileChooser recebeImagem = new JFileChooser();
 			FileNameExtensionFilter filtro = new FileNameExtensionFilter("Arquivos de Imagem", "jpg", "png");
@@ -733,37 +707,38 @@ public class FrmConsultaA extends JFrame implements ActionListener, ListSelectio
 			if (imagemSelecionada == JFileChooser.APPROVE_OPTION) {
 				imagemCarregada = recebeImagem.getSelectedFile().getAbsolutePath();
 				imagemCarregada = imagemCarregada.replaceAll("\\\\", "/");
-				imagemCarregada = ("file:///"+imagemCarregada);
-//				imagemCarregada = "C://Users//bruno//Documents//Overwatch//ScreenShots//Overwatch//ScreenShot_17-10-09_00-33-53-000.jpg";
+				imagemCarregada = ("file:///" + imagemCarregada);
+				// imagemCarregada =
+				// "C://Users//bruno//Documents//Overwatch//ScreenShots//Overwatch//ScreenShot_17-10-09_00-33-53-000.jpg";
 			}
-//			System.out.println(imagemCarregada);
+			// System.out.println(imagemCarregada);
 			verImagem();
-		} 
-		
+		}
+
 		else if ("+".equals(cmd)) {
-			String tipoProduto = JOptionPane.showInputDialog("Informe o tipo de produto:", JOptionPane.INPUT_VALUE_PROPERTY);
+			String tipoProduto = JOptionPane.showInputDialog("Informe o tipo de produto:");
 			cboxTipoProduto.addItem(tipoProduto);
-			cboxTipoProduto.invalidate();			
+			cboxTipoProduto.invalidate();
 			cboxTipoProduto.repaint();
 			cboxTipoProduto.revalidate();
 		}
-				
+
 	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		String cmd = e.toString();
-		System.out.println(cmd);
-//		Produto produto = listagem.getDadosLinha(tableProduto.getSelectedRow());
+//		String cmd = e.toString();
+//		System.out.println(cmd);
+		Produto produto = listagem.getDadosLinha(tableProduto.getSelectedRow());
 		btnAlterar.setEnabled(true);
 		btnExcluir.setEnabled(true);
 		painelBotoes.invalidate();
 		painelBotoes.revalidate();
 		painelBotoes.repaint();
-//		painelFormulario.add(painelBotoes, BorderLayout.SOUTH);
-//		if (produto != null) {
-//			recebeProduto(produto);
-//		}
+		painelFormulario.add(painelBotoes, BorderLayout.SOUTH);
+		if (produto != null) {
+			recebeProduto(produto);
+		}
 	}
 
 }

@@ -82,7 +82,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	public List<Produto> listar() {
 
 		List<Produto> listaTemp = new ArrayList<Produto>();
-		String query = "SELECT finalidade, nome, marca, tipoProduto, quantidade, validade, valorProduto FROM produto";
+		String query = "SELECT * FROM produto";
 		Connection con = DBUtil.getInstance().getConnection();
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);

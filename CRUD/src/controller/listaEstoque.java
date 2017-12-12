@@ -70,7 +70,7 @@ public class listaEstoque implements TableModel {
 //		System.out.println("preenche");
 		Produto produto = this.listaProduto.get(linha);
 		switch (coluna) {
-		case 7:
+		case 0:
 			return produto.getNome();
 		case 1:
 			return produto.getMarca();
